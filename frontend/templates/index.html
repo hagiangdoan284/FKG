@@ -159,7 +159,6 @@
           <div class="result-info">
             <div class="stats">
               <div><span>Nhãn dự đoán</span><strong>{{ result.predicted_text }}</strong></div>
-              <div><span>Độ tin cậy</span><strong>{{ '%.2f'|format(result.confidence * 100) }}%</strong></div>
               <div><span>Feature khớp</span><strong>{{ result.feature_hits }}/{{ result.total_features }}</strong></div>
             </div>
             <div class="diag-card">

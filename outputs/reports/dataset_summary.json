@@ -1,0 +1,30 @@
+{
+  "labels_csv": "D:\\DATN\\DATN\\data\\labels_brset.csv",
+  "image_dir": "D:\\DATN\\DATN\\data\\fundus_photos",
+  "num_label_rows": 16266,
+  "num_records": 16266,
+  "num_existing_images": 16266,
+  "num_missing_images": 0,
+  "target": "diabetic_retinopathy",
+  "target_distribution": {
+    "0": 15196,
+    "1": 1070
+  },
+  "source_table_columns": [
+    "image_id",
+    "patient_age",
+    "diabetes_time_y",
+    "insuline",
+    "patient_sex",
+    "exam_eye",
+    "diabetes",
+    "optic_disc",
+    "vessels",
+    "macula",
+    "focus",
+    "Illuminaton",
+    "image_field",
+    "quality",
+    "diabetic_retinopathy"
+  ]
+}

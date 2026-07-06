@@ -1,0 +1,62 @@
+[
+  {
+    "ran": 15,
+    "error_threshold": 0.2,
+    "sampled_rule_rows_mean": 2234.0,
+    "sampling_seconds_mean": 14.485404253005981,
+    "train_seconds_mean": 0.6188738822937012,
+    "test_seconds_mean": 0.4537161350250244,
+    "total_seconds_mean": 1.0725900173187255,
+    "accuracy_mean": 0.5993733354222153,
+    "accuracy_std": 0.007718411649795871,
+    "precision_mean": 0.6231529012924404,
+    "precision_std": 0.014013247338793625,
+    "recall_mean": 0.5993393072150763,
+    "recall_std": 0.007715796152300558
+  },
+  {
+    "ran": 15,
+    "error_threshold": 0.3,
+    "sampled_rule_rows_mean": 2234.0,
+    "sampling_seconds_mean": 16.489189529418944,
+    "train_seconds_mean": 0.6179513454437255,
+    "test_seconds_mean": 0.48490200042724607,
+    "total_seconds_mean": 1.1028533458709717,
+    "accuracy_mean": 0.598151339495535,
+    "accuracy_std": 0.012101382213882596,
+    "precision_mean": 0.6105600389605447,
+    "precision_std": 0.017532524739437446,
+    "recall_mean": 0.5981260441137316,
+    "recall_std": 0.012097713649778722
+  },
+  {
+    "ran": 20,
+    "error_threshold": 0.2,
+    "sampled_rule_rows_mean": 2979.0,
+    "sampling_seconds_mean": 32.501522397995,
+    "train_seconds_mean": 0.7617257118225098,
+    "test_seconds_mean": 0.48264522552490235,
+    "total_seconds_mean": 1.244370937347412,
+    "accuracy_mean": 0.6009399968666771,
+    "accuracy_std": 0.004797413065478011,
+    "precision_mean": 0.6351867469734729,
+    "precision_std": 0.007591593876656712,
+    "recall_mean": 0.6009006082269289,
+    "recall_std": 0.0047972955102495475
+  },
+  {
+    "ran": 20,
+    "error_threshold": 0.3,
+    "sampled_rule_rows_mean": 2979.0,
+    "sampling_seconds_mean": 11.568642568588256,
+    "train_seconds_mean": 0.5451506614685059,
+    "test_seconds_mean": 0.38947200775146484,
+    "total_seconds_mean": 0.9346226692199707,
+    "accuracy_mean": 0.6020993263355788,
+    "accuracy_std": 0.012436173940383224,
+    "precision_mean": 0.6087468891769837,
+    "precision_std": 0.014792498325338395,
+    "recall_mean": 0.6020808249077725,
+    "recall_std": 0.012433857352252912
+  }
+]

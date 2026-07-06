@@ -1,0 +1,11 @@
+{
+  "input_rows": 30392,
+  "train_rows": 21274,
+  "test_rows": 9118,
+  "rule_rows": 21274,
+  "reduced_rule_rows": 9521,
+  "model_rule_rows": 9521,
+  "train_rule_rows": 14892,
+  "test_rule_rows": 6382,
+  "runtime_seconds": 7.101869583129883
+}

@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dự đoán bệnh võng mạc</title>
+  <link rel="stylesheet" href="..\frontend\static\styles.css">
+</head>
+<body>
+  <header class="top-nav">
+    <div class="brand">FuzzyVision</div>
+    <div class="nav-meta">Dự đoán bằng thuật toán FKG</div>
+  </header>
+
+  <main class="page-wrap">
+    <section class="card form-card">
+      <form method="post" enctype="multipart/form-data">
+        <div class="upload-head">
+          <div class="upload-title-line">
+            <h1>Tải ảnh đáy mắt lên để dự đoán</h1>
+            <p>Ảnh đáy mắt (Fundus Image) và thông tin lâm sàng</p>
+          </div>
+          <span class="badge">1/1</span>
+        </div>
+
+        <label class="dropzone" for="image">
+          <span id="drop-icon" class="drop-icon">+</span>
+          <span id="drop-main" class="drop-main">Thêm ảnh đáy mắt</span>
+          <span id="drop-sub" class="drop-sub">Click hoặc kéo ảnh vào ô này</span>
+          <img id="drop-preview" class="drop-preview" alt="Xem trước ảnh đã chọn">
+          <span id="file-name" class="drop-file-name">Chưa chọn ảnh</span>
+          <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png,.bmp" required>
+        </label>
+        <button type="button" id="clear-image-btn" class="clear-image-btn" style="display:none;">Xóa ảnh đã chọn</button>
+
+        <div class="form-grid">
+          <label>Tuổi bệnh nhân (Patient Age) <span class="info-icon" title="Tuổi bệnh nhân tại thời điểm chụp ảnh.">ⓘ</span>
+            <select name="patient_age" title="Tuổi bệnh nhân lấy theo dải giá trị trong dữ liệu.">
+              <option value="">Chọn tuổi</option>
+              
+            </select>
+          </label>
+
+          <label>Tiểu đường (Diabetes) <span class="info-icon" title="Tình trạng có/không mắc tiểu đường.">ⓘ</span>
+            <select id="diabetes-select" name="diabetes" title="Mã gốc dataset: yes/No.">
+              <option value="">Chọn</option>
+              <option value="yes" >Có</option>
+              <option value="No" >Không</option>
+            </select>
+          </label>
+
+          <label>Thời gian tiểu đường - năm (Diabetes Time Y) <span class="info-icon" title="Số năm đã được chẩn đoán tiểu đường. Chỉ nhập khi mục Tiểu đường = Có.">ⓘ</span>
+            <input id="diabetes-time-input" type="number" step="1" name="diabetes_time_y" title="Số năm mắc tiểu đường theo metadata dataset." value="">
+          </label>
+
+          <label>Sử dụng insulin (Insuline) <span class="info-icon" title="Bệnh nhân có đang sử dụng insulin hay không.">ⓘ</span>
+            <select name="insuline" title="Mã gốc dataset: yes/no.">
+              <option value="">Chọn</option>
+              <option value="yes" >Có</option>
+              <option value="no" >Không</option>
+            </select>
+          </label>
+
+          <label>Giới tính (Patient Sex) <span class="info-icon" title="Theo BRSET: 1 = nam, 2 = nữ.">ⓘ</span>
+            <select name="patient_sex" title="Theo BRSET: 1 = nam, 2 = nữ.">
+              <option value="">Chọn</option>
+              <option value="1" >Nam</option>
+              <option value="2" >Nữ</option>
+            </select>
+          </label>
+
+          <label>Mắt khám (Exam Eye) <span class="info-icon" title="Theo BRSET: 1 = mắt phải, 2 = mắt trái.">ⓘ</span>
+            <select name="exam_eye" title="Theo BRSET: 1 = mắt phải, 2 = mắt trái.">
+              <option value="">Chọn</option>
+              <option value="1" >Mắt phải</option>
+              <option value="2" >Mắt trái</option>
+            </select>
+          </label>
+
+          <label>Đĩa thị (Optic Disc) <span class="info-icon" title="Đánh giá vùng đĩa thị trên ảnh đáy mắt.">ⓘ</span>
+            <select name="optic_disc" title="Theo BRSET: 1 = bình thường, 2 = bất thường.">
+              <option value="">Chọn</option>
+              <option value="1" >Bình thường</option>
+              <option value="2" >Bất thường</option>
+            </select>
+          </label>
+
+          <label>Mạch máu (Vessels) <span class="info-icon" title="Đánh giá tình trạng hệ mạch máu võng mạc.">ⓘ</span>
+            <select name="vessels" title="Theo BRSET: 1 = bình thường, 2 = bất thường.">
+              <option value="">Chọn</option>
+              <option value="1" >Bình thường</option>
+              <option value="2" >Bất thường</option>
+            </select>
+          </label>
+
+          <label>Hoàng điểm (Macula) <span class="info-icon" title="Đánh giá vùng hoàng điểm trên ảnh đáy mắt.">ⓘ</span>
+            <select name="macula" title="Theo BRSET: 1 = bình thường, 2 = bất thường.">
+              <option value="">Chọn</option>
+              <option value="1" >Bình thường</option>
+              <option value="2" >Bất thường</option>
+            </select>
+          </label>
+
+          <label>Độ nét (Focus) <span class="info-icon" title="Chất lượng lấy nét của ảnh đáy mắt.">ⓘ</span>
+            <select name="focus" title="Theo BRSET: 1 = bình thường, 2 = bất thường. Mã 0 là ngoại lệ hiếm.">
+              <option value="">Chọn</option>
+              <option value="0" >Mã 0 (ngoại lệ)</option>
+              <option value="1" >Bình thường</option>
+              <option value="2" >Bất thường</option>
+            </select>
+          </label>
+
+          <label>Độ chiếu sáng (Illuminaton) <span class="info-icon" title="Mức chiếu sáng của ảnh khi chụp.">ⓘ</span>
+            <select name="Illuminaton" title="Theo BRSET: 1 = bình thường, 2 = bất thường.">
+              <option value="">Chọn</option>
+              <option value="1" >Bình thường</option>
+              <option value="2" >Bất thường</option>
+            </select>
+          </label>
+
+          <label>Trường ảnh (Image Field) <span class="info-icon" title="Phạm vi trường nhìn trong ảnh chụp đáy mắt.">ⓘ</span>
+            <select name="image_field" title="Theo BRSET: 1 = bình thường, 2 = bất thường (tham số kiểm soát chất lượng ảnh).">
+              <option value="">Chọn</option>
+              <option value="1" >Bình thường</option>
+              <option value="2" >Bất thường</option>
+            </select>
+          </label>
+
+          <label>Chất lượng ảnh (Quality) <span class="info-icon" title="Đánh giá tổng quát chất lượng ảnh: đạt hoặc không đạt.">ⓘ</span>
+            <select name="quality" title="Mã gốc dataset: Adequate/Inadequate.">
+              <option value="">Chọn</option>
+              <option value="Adequate" >Đạt</option>
+              <option value="Inadequate" >Không đạt</option>
+            </select>
+          </label>
+        </div>
+
+        <button type="submit" class="predict-btn">Dự đoán</button>
+      </form>
+
+      
+
+      
+      <div class="result">
+        <p class="pill pill-done">Hoàn tất</p>
+        <h2>Kết quả dự đoán</h2>
+        <div class="result-grid">
+          <div class="result-image">
+            
+            <img src="file://D:\DATN\DATN\data\fundus_photos\img00001.jpg" alt="Ảnh đã tải lên">
+            
+          </div>
+          <div class="result-info">
+            <div class="stats">
+              <div><span>Nhãn dự đoán</span><strong>Không DR</strong></div>
+              <div><span>Độ tin cậy</span><strong>100.00%</strong></div>
+              <div><span>Score (D_best)</span><strong>1.0000</strong></div>
+              <div><span>Score (D_second)</span><strong>0.0000</strong></div>
+              <div><span>Feature khớp</span><strong>16/16</strong></div>
+            </div>
+            <div class="diag-card">
+              <h3>Diễn giải</h3>
+              <p><strong>Giải thích nhanh về độ tin cậy:</strong> giá trị confidence được tính theo công thức
+                <em>confidence = D_best / (D_best + D_second)</em>. Với hai lớp, giá trị nằm trong khoảng 50% (hai lớp ngang nhau) đến 100% (không có hỗ trợ cho lớp thứ hai).
+              </p>
+              
+              <p>Kết quả nghiêng về nhóm <strong>không có dấu hiệu bệnh võng mạc tiểu đường</strong>. Vẫn nên khám mắt định kỳ theo khuyến nghị bác sĩ.</p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+  </main>
+</body>
+<script>
+  const imageInput = document.getElementById("image");
+  const fileName = document.getElementById("file-name");
+  const preview = document.getElementById("drop-preview");
+  const dropIcon = document.getElementById("drop-icon");
+  const dropMain = document.getElementById("drop-main");
+  const dropSub = document.getElementById("drop-sub");
+  const clearBtn = document.getElementById("clear-image-btn");
+  const diabetesSelect = document.getElementById("diabetes-select");
+  const diabetesTimeInput = document.getElementById("diabetes-time-input");
+
+  function syncDiabetesTimeState() {
+    const hasDiabetes = diabetesSelect.value === "yes";
+    diabetesTimeInput.disabled = !hasDiabetes;
+    if (!hasDiabetes) {
+      diabetesTimeInput.value = "";
+    }
+  }
+
+  function resetDropzone() {
+    fileName.textContent = "Chưa chọn ảnh";
+    preview.style.display = "none";
+    preview.removeAttribute("src");
+    dropIcon.style.display = "grid";
+    dropMain.style.display = "inline";
+    dropSub.style.display = "inline";
+    clearBtn.style.display = "none";
+    imageInput.value = "";
+  }
+
+  imageInput.addEventListener("change", () => {
+    const file = imageInput.files && imageInput.files[0];
+    if (!file) {
+      resetDropzone();
+      return;
+    }
+    fileName.textContent = file.name;
+    const blobUrl = URL.createObjectURL(file);
+    preview.src = blobUrl;
+    preview.style.display = "block";
+    dropIcon.style.display = "none";
+    dropMain.style.display = "none";
+    dropSub.style.display = "none";
+    clearBtn.style.display = "inline-flex";
+  });
+
+  clearBtn.addEventListener("click", resetDropzone);
+  diabetesSelect.addEventListener("change", syncDiabetesTimeState);
+  syncDiabetesTimeState();
+</script>
+</html>

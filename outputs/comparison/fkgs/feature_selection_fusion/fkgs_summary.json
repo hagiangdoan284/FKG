@@ -1,0 +1,62 @@
+[
+  {
+    "ran": 15,
+    "error_threshold": 0.2,
+    "sampled_rule_rows_mean": 2234.0,
+    "sampling_seconds_mean": 25.80343852043152,
+    "train_seconds_mean": 0.5812559127807617,
+    "test_seconds_mean": 0.4396873950958252,
+    "total_seconds_mean": 1.0209433078765868,
+    "accuracy_mean": 0.5896287012376625,
+    "accuracy_std": 0.013650917303849272,
+    "precision_mean": 0.590427559218489,
+    "precision_std": 0.012822606380463536,
+    "recall_mean": 0.5896255838593664,
+    "recall_std": 0.013654625199066319
+  },
+  {
+    "ran": 15,
+    "error_threshold": 0.3,
+    "sampled_rule_rows_mean": 2234.0,
+    "sampling_seconds_mean": 7.323421955108643,
+    "train_seconds_mean": 0.5775331020355224,
+    "test_seconds_mean": 0.4429586887359619,
+    "total_seconds_mean": 1.0204917907714843,
+    "accuracy_mean": 0.7288422371925427,
+    "accuracy_std": 0.014087501247239105,
+    "precision_mean": 0.731101462420216,
+    "precision_std": 0.01170003085277194,
+    "recall_mean": 0.7288350537892836,
+    "recall_std": 0.014091267039533003
+  },
+  {
+    "ran": 20,
+    "error_threshold": 0.2,
+    "sampled_rule_rows_mean": 2979.0,
+    "sampling_seconds_mean": 25.28306303024292,
+    "train_seconds_mean": 0.7783188819885254,
+    "test_seconds_mean": 0.5038514137268066,
+    "total_seconds_mean": 1.282170295715332,
+    "accuracy_mean": 0.6484098386338712,
+    "accuracy_std": 0.042308474760972714,
+    "precision_mean": 0.6543812154796933,
+    "precision_std": 0.048009531663590004,
+    "recall_mean": 0.648396895168036,
+    "recall_std": 0.04230445221964738
+  },
+  {
+    "ran": 20,
+    "error_threshold": 0.3,
+    "sampled_rule_rows_mean": 2979.0,
+    "sampling_seconds_mean": 6.702572154998779,
+    "train_seconds_mean": 0.7673328399658204,
+    "test_seconds_mean": 0.45853571891784667,
+    "total_seconds_mean": 1.225868558883667,
+    "accuracy_mean": 0.728497571674761,
+    "accuracy_std": 0.014285856466519172,
+    "precision_mean": 0.7303869683886438,
+    "precision_std": 0.011799953195930019,
+    "recall_mean": 0.7284913945785806,
+    "recall_std": 0.01428993812216473
+  }
+]
